@@ -1,6 +1,6 @@
 include /build/Makefile.config
 
-SUBS := hello rsync socat ssh
+SUBS := hello rsync socat ssh ptpd easycwmp
 
 default: all
 

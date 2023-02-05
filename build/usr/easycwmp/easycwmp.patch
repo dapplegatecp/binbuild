@@ -1,0 +1,34 @@
+diff -ruN easycwmp-1.8.6/bin/Makefile.am easycwmp-1.8.6-diff/bin/Makefile.am
+--- easycwmp-1.8.6/bin/Makefile.am	2019-12-17 11:03:19.000000000 +0000
++++ easycwmp-1.8.6-diff/bin/Makefile.am	2023-02-05 17:10:36.001515704 +0000
+@@ -51,8 +51,8 @@
+ easycwmpd_LDADD =		\
+ 	$(AM_LIBS)			\
+ 	$(LIBUCI_LIBS)		\
+-	$(LIBUBOX_LIBS)		\
+ 	$(LIBUBUS_LIBS)		\
++	$(LIBUBOX_LIBS)		\
+ 	$(MICROXML_LIBS)	\
+ 	$(LIBCURL_LIBS)		\
+ 	$(LIBJSON_LIBS)
+diff -ruN easycwmp-1.8.6/configure.ac easycwmp-1.8.6-diff/configure.ac
+--- easycwmp-1.8.6/configure.ac	2019-12-17 11:03:19.000000000 +0000
++++ easycwmp-1.8.6-diff/configure.ac	2023-02-05 17:10:14.915265729 +0000
+@@ -1,5 +1,4 @@
+ AC_INIT([easycwmpd], [1.8.6], [mohamed.kallel@pivasoftware.com])
+-AM_INIT_AUTOMAKE
+ AC_CONFIG_SRCDIR([src/easycwmp.c])
+ 
+ AM_INIT_AUTOMAKE([subdir-objects])
+diff -ruN easycwmp-1.8.6/src/cwmp.h easycwmp-1.8.6-diff/src/cwmp.h
+--- easycwmp-1.8.6/src/cwmp.h	2019-12-17 11:03:19.000000000 +0000
++++ easycwmp-1.8.6-diff/src/cwmp.h	2023-02-05 17:11:09.641914507 +0000
+@@ -142,7 +142,7 @@
+ };
+ 
+ extern struct cwmp_internal *cwmp;
+-struct event_code event_code_array[__EVENT_MAX];
++extern struct event_code event_code_array[__EVENT_MAX];
+ 
+ static void cwmp_periodic_inform(struct uloop_timeout *timeout);
+ static void cwmp_do_inform(struct uloop_timeout *timeout);

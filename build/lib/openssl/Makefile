@@ -11,7 +11,7 @@ all: $(FILE) $(DIRECTORY) $(CONFIG_H)
 	make -C $(DIRECTORY)
 
 $(CONFIG_H):
-	cd $(DIRECTORY) && ./Configure --prefix=$(DESTDIR) linux-aarch64 no-async
+	cd $(DIRECTORY) && ./Configure --prefix=$(DESTDIR) linux-aarch64 no-async no-shared
 
 $(DIRECTORY):
 	tar -vxf $(FILE)

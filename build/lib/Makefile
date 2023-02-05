@@ -1,6 +1,6 @@
 include /build/Makefile.config
 
-SUBS := lz4 openssl xxhash zlib zstd
+SUBS := lz4 openssl xxhash zlib zstd curl json-c libubox libubus uci microxml
 
 default: all
 
