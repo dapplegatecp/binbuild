@@ -1,7 +1,7 @@
 include /build/Makefile.config
 
 CFLAGS += 
-LDFLAGS += 
+LDFLAGS += -static
 
 EXEC = hello
 OBJS = hello.o
@@ -13,7 +13,7 @@ all: $(EXEC)
 $(OBJS): hello.h
 
 $(EXEC): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $@
+	$(CC) -o $@ $(CFLAGS) $(OBJS) $(LDFLAGS) 
 
 install: $(EXEC)
 	mkdir -p $(DESTDIR)/usr/bin/

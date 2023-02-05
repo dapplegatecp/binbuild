@@ -5,6 +5,8 @@ FILE := socat-1.7.4.4.tar.gz
 DIRECTORY := socat-1.7.4.4
 CONFIG_H = $(DIRECTORY)/config.h
 
+LDFLAGS += -static
+
 default: all
 
 all: $(FILE) $(DIRECTORY) $(CONFIG_H)
