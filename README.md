@@ -6,7 +6,7 @@ TODO: put together an arm32 toolchain for building other platforms.
 ## Usage
 First build the dockerfile and give it a useful image name:
 ```
-docker build . -t dapplegatecp/toolchain-aarch64-uclibc`
+docker build . -t dapplegatecp/toolchain-aarch64-uclibc
 ```
 
 Then run the docker image being sure to specify and `output` location for built binaries:
