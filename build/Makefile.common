@@ -1,11 +1,9 @@
-ARCH ?= aarch64
 JOBS ?= 10
 DESTDIR=/output
 CPPFLAGS+=-I$(DESTDIR)/include -I$(DESTDIR)/usr/include -I$(DESTDIR)/usr/local/include
-CFLAGS+=-march=armv8-a -fno-strict-aliasing -mcpu=cortex-a53+crypto -ftls-model=initial-exec -Os
 LDFLAGS+=-L$(DESTDIR)/lib -L$(DESTDIR)/usr/lib -L$(DESTDIR)/usr/local/lib
 TOOLCHAIN=/toolchain/bin/
-CROSS_TUPLE=$(ARCH)-buildroot-linux-uclibc
+CROSS_TUPLE=$(ARCH)-buildroot-linux-uclibc$(UCLIBC_POSTFIX)
 CC := $(TOOLCHAIN)$(CROSS_TUPLE)-gcc
 GPLUSPLUS=$(TOOLCHAIN)$(CROSS_TUPLE)-g++
 CXX=$(TOOLCHAIN)$(CROSS_TUPLE)-g++ 
