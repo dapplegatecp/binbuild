@@ -10,7 +10,7 @@ LDFLAGS += -static
 default: all
 
 all: $(FILE) $(DIRECTORY) $(CONFIG_H)
-	make -C $(DIRECTORY) ssh
+	make -C $(DIRECTORY) ssh scp sshd
 
 $(CONFIG_H):
 	cd $(DIRECTORY) && ./configure --host=$(HOST) --prefix=$(DESTDIR)
@@ -23,9 +23,11 @@ $(FILE):
 	touch $@
 
 install: all
-	# just copy the ssh binary
+	# just copy the ssh and scp binary
 	mkdir -p $(DESTDIR)/usr/bin/
 	cp $(DIRECTORY)/ssh $(DESTDIR)/usr/bin/
+	cp $(DIRECTORY)/scp $(DESTDIR)/usr/bin/
+	cp $(DIRECTORY)/sshd $(DESTDIR)/usr/bin/
 
 clean:
 	rm -rf $(DIRECTORY)
