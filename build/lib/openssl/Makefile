@@ -13,6 +13,8 @@ FILE := openssl-1.1.1s.tar.gz
 DIRECTORY := openssl-1.1.1s
 MAKEFILE = $(DIRECTORY)/Makefile
 
+LDFLAGS+=-static
+
 default: all
 
 all: $(MAKEFILE)
@@ -29,7 +31,7 @@ $(FILE):
 	touch $@
 
 install: all
-	make -C $(DIRECTORY) install
+	make -C $(DIRECTORY) install_sw
 
 clean:
 	rm -rf $(DIRECTORY)

@@ -13,7 +13,7 @@ all: $(EXEC)
 $(OBJS): hello.h
 
 $(EXEC): $(OBJS)
-	$(CC) -o $@ $(CFLAGS) $(OBJS) $(LDFLAGS) 
+	$(CC) -o $@ $(CFLAGS) $(OBJS) $(LDFLAGS)
 
 install: $(EXEC)
 	mkdir -p $(DESTDIR)/usr/bin/

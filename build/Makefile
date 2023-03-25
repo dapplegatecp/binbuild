@@ -5,6 +5,7 @@ SUBS := lib usr
 default: all
 
 all: $(SUBS)
+	find /output -executable -type f -exec $(STRIP) --strip-all {} \;
 
 install: all
 

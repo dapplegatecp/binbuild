@@ -1,0 +1,13 @@
+FROM muslcc/x86_64:x86_64-linux-musl
+
+RUN apk --no-cache add make perl cmake git autoconf automake libtool patch pkgconfig
+
+COPY ./build /build
+
+RUN cp /build/Makefile.x86_64.config /build/Makefile.config
+
+RUN mkdir /output
+
+WORKDIR /build
+
+CMD make install && bash

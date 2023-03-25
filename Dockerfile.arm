@@ -1,0 +1,13 @@
+FROM muslcc/x86_64:armv7m-linux-musleabi
+
+RUN apk --no-cache add make perl cmake git autoconf automake libtool patch pkgconfig
+
+COPY ./build /build
+
+RUN cp /build/Makefile.arm.config /build/Makefile.config
+
+RUN mkdir /output
+
+WORKDIR /build
+
+CMD make install && bash

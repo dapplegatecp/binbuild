@@ -5,6 +5,8 @@ FILE := curl-7.87.0.tar.gz
 DIRECTORY := curl-7.87.0
 CONFIG = $(DIRECTORY)/curl-config
 
+LDFLAGS+=--static
+
 default: all
 
 all: $(FILE) $(DIRECTORY) $(CONFIG)

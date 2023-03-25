@@ -1,25 +1,21 @@
 # binbuild
-The goal of this repo is to provide Dockerfile and Makefile scripts to generate cross-builds of various binaries for the aarch64 or armv7 architecture. These binaries should be compatible to run on certain aarch64 or armv7 platforms. 
+The goal of this repo is to provide Dockerfiles and Makefile scripts to generate cross-builds of various binaries for the aarch64 or armv7 architecture. These 
+binaries are statically linked and should be compatible to run on certain aarch64 or armv7 platforms simply by copying them over and running them.
 
 ## Usage
-First build the dockerfile and give it a useful image name:
+First build the dockerfile corresponding to the desired architecture and giving 
+it a useful image name:
 ```
-docker build . -t dapplegatecp/toolchain-aarch64-uclibc
+docker build . -f Dockerfile.arm64 -t dapplegatecp/toolchain-arm64
 ```
-
-For armv7 provide the build arg `armv7-eabihf`
-
-```
-docker build . -t dapplegatecp/toolchain-arm-uclibc --build-arg ARCH=armv7-eabihf
-````
 
 Then run the docker image being sure to specify and `output` location for built binaries:
 ```
-docker run -it --rm -v `pwd`/output:/output dapplegatecp/toolchain-aarch64-uclibc
+docker run -it --rm -v `pwd`/output:/output dapplegatecp/toolchain-arm64
 ```
 or on windows
 ```
-docker run -it --rm -v %cd%/output:/output dapplegatecp/toolchain-aarch64-uclibc
+docker run -it --rm -v %cd%/output:/output dapplegatecp/toolchain-arm64
 ```
 
 This will run `make` in the /build directory inside the container and install binaries to the `output` directory. These binaries should be ready to run on the target platform.
@@ -27,11 +23,11 @@ This will run `make` in the /build directory inside the container and install bi
 In case you need to rebuild, or want more control over what is built. I suggest mounting the lib and usr directories as volumes and just running bash
 
 ```
- docker run -it --rm -v `pwd`/output:/output -v `pwd`/build/usr:/build/usr -v `pwd`/build/lib:/build/lib dapplegatecp/toolchain-aarch64-uclibc bash
+ docker run -it --rm -v `pwd`/output:/output -v `pwd`/build/usr:/build/usr -v `pwd`/build/lib:/build/lib dapplegatecp/toolchain-arm64 bash
  ```
 or on windows
 ```
- docker run -it --rm -v %cd%/output:/output -v %cd%/build/usr:/build/usr -v %cd%/build/lib:/build/lib dapplegatecp/toolchain-aarch64-uclibc bash
+ docker run -it --rm -v %cd%/output:/output -v %cd%/build/usr:/build/usr -v %cd%/build/lib:/build/lib dapplegatecp/toolchain-arm64 bash
  ```
 
  The resulting binaries will be scattered in the /output folder likely in
