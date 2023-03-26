@@ -3,17 +3,17 @@ include /build/Makefile.config
 DOWNLOAD_PATH := https://github.com/json-c/json-c/archive/refs/tags/
 FILE := json-c-0.16-20220414.tar.gz
 DIRECTORY := json-c-json-c-0.16-20220414
-CONFIG_H = $(DIRECTORY)/config.h
+BUILD_DIR = json-c-build
 
 # LDFLAGS += -static
 
 default: all
 
-all: $(FILE) $(DIRECTORY) $(CONFIG_H)
-	make -C json-c-build
+all: $(BUILD_DIR)
+	$(MAKE) -C $(BUILD_DIR)
 
-$(CONFIG_H):
-	mkdir -p json-c-build && cd json-c-build && cmake ../$(DIRECTORY) 
+$(BUILD_DIR): $(DIRECTORY)
+	mkdir -p $(BUILD_DIR) && cd $(BUILD_DIR) && cmake ../$(DIRECTORY) 
 
 $(DIRECTORY): $(FILE)
 	tar -vxf $(FILE)
@@ -23,13 +23,13 @@ $(FILE):
 	touch $@
 
 install: all
-	make -C json-c-build install
+	make -C $(BUILD_DIR) install
 	ln -sf $(DESTDIR)/usr/local/include/json-c $(DESTDIR)/usr/local/include/json
 	ln -sf $(DESTDIR)/usr/local/lib/libjson-c.a $(DESTDIR)/usr/local/lib/libjson.a
 
 clean:
 	rm -rf $(DIRECTORY)
 	rm -rf $(FILE)
-	rm -rf json-c-build
+	rm -rf $(BUILD_DIR)
 
 .PHONY: install clean

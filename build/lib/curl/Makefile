@@ -10,7 +10,7 @@ LDFLAGS+=--static
 default: all
 
 all: $(FILE) $(DIRECTORY) $(CONFIG)
-	make -C $(DIRECTORY)
+	$(MAKE) -C $(DIRECTORY)
 
 $(CONFIG):
 	cd $(DIRECTORY) && ./configure --host=$(HOST) --with-openssl --disable-shared --prefix=$(DESTDIR)/usr/local

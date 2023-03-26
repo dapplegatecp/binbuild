@@ -7,7 +7,7 @@ DIRECTORY := lz4-1.9.4
 default: all
 
 all: $(FILE) $(DIRECTORY)
-	make -C $(DIRECTORY)
+	$(MAKE) -C $(DIRECTORY)
 
 $(DIRECTORY):
 	tar -vxf $(FILE)

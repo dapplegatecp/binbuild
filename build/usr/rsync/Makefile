@@ -10,7 +10,7 @@ LDFLAGS += -static
 default: all
 
 all: $(FILE) $(DIRECTORY) $(CONFIG_H)
-	make -C $(DIRECTORY)
+	$(MAKE) -C $(DIRECTORY)
 
 $(CONFIG_H):
 	cd $(DIRECTORY) && ./configure --host=$(HOST) --disable-md2man --disable-debug --disable-openssl

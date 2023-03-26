@@ -7,7 +7,7 @@ DIRECTORY := zstd-1.5.2
 default: all
 
 all: $(FILE) $(DIRECTORY)
-	make -C $(DIRECTORY) lib-release
+	$(MAKE) -C $(DIRECTORY) lib-release
 
 $(DIRECTORY):
 	tar -vxf $(FILE)

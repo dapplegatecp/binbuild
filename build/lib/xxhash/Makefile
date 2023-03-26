@@ -7,7 +7,7 @@ DIRECTORY := xxHash-0.8.1
 default: all
 
 all: $(FILE) $(DIRECTORY)
-	make -C $(DIRECTORY)
+	$(MAKE) -C $(DIRECTORY)
 
 $(DIRECTORY):
 	tar -vxf $(FILE)

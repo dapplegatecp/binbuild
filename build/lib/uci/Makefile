@@ -2,16 +2,16 @@ include /build/Makefile.config
 
 DOWNLOAD_PATH := git://nbd.name/uci.git
 DIRECTORY := uci
-CONFIG_H = $(DIRECTORY)/config.h
+CONFIG_H = $(DIRECTORY)/uci_config.h
 
 LDFLAGS += -static
 
 default: all
 
-all: $(DIRECTORY) $(CONFIG_H)
-	make -C $(DIRECTORY)
+all: $(CONFIG_H)
+	$(MAKE) -C $(DIRECTORY)
 
-$(CONFIG_H):
+$(CONFIG_H): $(DIRECTORY) 
 	sed -i 's/ADD_LIBRARY(uci SHARED/ADD_LIBRARY(uci STATIC/' $(DIRECTORY)/CMakeLists.txt
 	cd $(DIRECTORY) && cmake CMakeLists.txt -DBUILD_LUA=OFF -DCMAKE_C_FLAGS="$(CPPFLAGS)"
 

@@ -10,7 +10,7 @@ LDFLAGS += --static #some reason --static as oppsed to -static works
 default: all
 
 all: $(FILE) $(DIRECTORY) $(CONFIG_H)
-	make -C $(DIRECTORY)
+	$(MAKE) -C $(DIRECTORY)
 
 $(CONFIG_H):
 	sed -i '/^AC_FUNC_MALLOC$$/d' $(DIRECTORY)/configure.ac #fix a autoconf issue

@@ -1,4 +1,5 @@
 JOBS ?= 10
+MAKE := make -j$(JOBS)
 DESTDIR=/output
 CPPFLAGS+=-I$(DESTDIR)/include -I$(DESTDIR)/usr/include -I$(DESTDIR)/usr/local/include
 LDFLAGS+=-L$(DESTDIR)/lib -L$(DESTDIR)/usr/lib -L$(DESTDIR)/usr/local/lib

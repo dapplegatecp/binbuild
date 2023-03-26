@@ -10,7 +10,7 @@ LDFLAGS += -static
 default: all
 
 all: $(FILE) $(DIRECTORY) $(CONFIG_H)
-	make -C $(DIRECTORY) ssh scp sshd
+	$(MAKE) -C $(DIRECTORY) ssh scp sshd
 
 $(CONFIG_H):
 	cd $(DIRECTORY) && ./configure --host=$(HOST) --prefix=$(DESTDIR)

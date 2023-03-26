@@ -18,7 +18,7 @@ LDFLAGS+=-static
 default: all
 
 all: $(MAKEFILE)
-	make -C $(DIRECTORY)
+	$(MAKE) -C $(DIRECTORY)
 
 $(MAKEFILE): $(DIRECTORY)
 	cd $(DIRECTORY) && ./Configure --prefix=$(DESTDIR) $(MACHINE) no-async no-shared no-ssl2 no-pic

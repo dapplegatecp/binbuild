@@ -5,7 +5,8 @@ SUBS := lib usr
 default: all
 
 all: $(SUBS)
-	find /output -executable -type f -exec $(STRIP) --strip-all {} \;
+	mkdir -p /output/bins && find /output -executable -type f -exec file {} \; | grep static-pie | cut -d":" -f1 | xargs -I{} cp {} /output/bins || true
+	$(STRIP) --strip-all /output/bins/*
 
 install: all
 

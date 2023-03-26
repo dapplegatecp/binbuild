@@ -1,45 +1,30 @@
-#
-# usr/bird
-#
-# Copyright (c) 2015 CradlePoint, Inc. <www.cradlepoint.com>.
-# All rights reserved.
-#
-# This file contains confidential information of CradlePoint, Inc. and your
-# use of this file is subject to the CradlePoint Software License Agreement
-# distributed with this file. Unauthorized reproduction or distribution of
-# this file is subject to civil and criminal penalties.
-#
+include /build/Makefile.config
 
-ROOT ?= /build
-include $(ROOT)/Makefile.config
-
-LINK := https://www.zlib.net/
-
-DIR := zlib-1.2.13
-PACKAGE := zlib-1.2.13.tar.gz
-CONFIG = $(DIR)/config.h
+DOWNLOAD_PATH := https://www.zlib.net/
+FILE := zlib-1.2.13.tar.gz
+DIRECTORY := zlib-1.2.13
+CONFIG = $(DIRECTORY)/configure.log
 
 default: all
 
-all: $(PACKAGE) $(DIR) $(CONFIG)
-	make -C $(DIR)
+all: $(CONFIG)
+	$(MAKE) -C $(DIRECTORY)
 
-$(PACKAGE):
-	wget $(LINK)$(PACKAGE)
+$(CONFIG): $(DIRECTORY)
+	cd $(DIRECTORY) && ./configure
+
+$(DIRECTORY): $(FILE)
+	tar -xf $(FILE)
+
+$(FILE):
+	wget $(DOWNLOAD_PATH)$(FILE)
 	touch $@
 
-$(DIR):
-	tar -xf $(PACKAGE)
-
-$(CONFIG):
-	cd $(DIR) && ./configure
-
 install: all
-	make -C $(DIR) install
-	ldconfig -n $(DESTDIR)/usr/
+	make -C $(DIRECTORY) install
 
 clean:
-	rm -rf $(DIR)
-	rm -rf $(PACKAGE)
+	rm -rf $(DIRECTORY)
+	rm -rf $(FILE)
 
 .PHONY:

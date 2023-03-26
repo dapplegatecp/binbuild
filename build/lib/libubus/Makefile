@@ -7,7 +7,7 @@ MAKEFILE = $(DIRECTORY)/Makefile
 default: all
 
 all: $(DIRECTORY) $(MAKEFILE)
-	make -C $(DIRECTORY) ubus
+	$(MAKE) -C $(DIRECTORY) ubus
 
 $(MAKEFILE):
 	sed -i 's/ADD_LIBRARY(ubus SHARED/ADD_LIBRARY(ubus STATIC/' $(DIRECTORY)/CMakeLists.txt

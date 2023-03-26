@@ -3,16 +3,16 @@ include /build/Makefile.config
 DOWNLOAD_PATH := https://github.com/wojtekka/6tunnel/releases/download/0.13/
 FILE := 6tunnel-0.13.tar.gz
 DIRECTORY := 6tunnel-0.13
-CONFIG_H := $(DIRECTORY)/config.h
+MAKEFILE := $(DIRECTORY)/Makefile
 
 LDFLAGS+=-static
 
 default: all
 
-all: $(CONFIG_H)
-	make -C $(DIRECTORY)
+all: $(MAKEFILE)
+	$(MAKE) -C $(DIRECTORY)
 
-$(CONFIG_H): $(DIRECTORY)
+$(MAKEFILE): $(DIRECTORY)
 	cd $(DIRECTORY) && ./configure --host=$(HOST) 
 
 $(DIRECTORY): $(FILE)

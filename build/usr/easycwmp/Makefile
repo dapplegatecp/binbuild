@@ -10,7 +10,7 @@ LDFLAGS += --static
 default: all
 
 all: $(FILE) $(DIRECTORY) $(MAKEFILE)
-	make -C $(DIRECTORY)
+	$(MAKE) -C $(DIRECTORY)
 
 $(MAKEFILE):
 	patch -s -p0 --forward < easycwmp.patch || true

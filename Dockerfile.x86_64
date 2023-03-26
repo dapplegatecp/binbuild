@@ -1,6 +1,6 @@
 FROM muslcc/x86_64:x86_64-linux-musl
 
-RUN apk --no-cache add make perl cmake git autoconf automake libtool patch pkgconfig
+RUN apk --no-cache add make perl cmake git autoconf automake libtool patch pkgconfig file
 
 COPY ./build /build
 
@@ -10,4 +10,4 @@ RUN mkdir /output
 
 WORKDIR /build
 
-CMD make install && bash
+CMD make install && ash

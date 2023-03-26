@@ -8,10 +8,10 @@ CONFIG_H = $(DIRECTORY)/config.h
 
 default: all
 
-all: $(DIRECTORY) $(CONFIG_H)
-	make -C $(DIRECTORY)
+all: $(CONFIG_H)
+	$(MAKE) -C $(DIRECTORY)
 
-$(CONFIG_H):
+$(CONFIG_H): $(DIRECTORY)
 	cd $(DIRECTORY) && autoreconf -i || true
 	cd $(DIRECTORY) && ./configure --host=$(HOST) --prefix=$(DESTDIR)/usr/local --disable-shared
 
