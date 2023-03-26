@@ -13,7 +13,7 @@ all: $(FILE) $(DIRECTORY) $(CONFIG_H)
 	make -C $(DIRECTORY)
 
 $(CONFIG_H):
-	# sed -i '/^AC_FUNC_MALLOC$$/d' $(DIRECTORY)/configure.ac #fix a autoconf issue
+	sed -i '/^AC_FUNC_MALLOC$$/d' $(DIRECTORY)/configure.ac #fix a autoconf issue
 	cd $(DIRECTORY) && autoreconf -i 
 	cd $(DIRECTORY) && ./configure --host=$(HOST) 
 
