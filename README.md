@@ -30,7 +30,7 @@ or on windows
  docker run -it --rm -v %cd%/output:/output -v %cd%/build/usr:/build/usr -v %cd%/build/lib:/build/lib dapplegatecp/toolchain-arm64 bash
  ```
 
- The resulting binaries will be scattered in the /output folder likely in
+ The resulting binaries will be consolidated in the /output/bins folder as well as scattered in the /output folder likely in
  /usr/bin, /usr/local/bin, /usr/local/sbin. Only the binaries that are statically linked will work, so use the `file` command to double check
 ```
 #file ./socat
